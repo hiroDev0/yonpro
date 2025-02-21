@@ -1,0 +1,24 @@
+services: # サービスを定義
+  db: # サービス名
+    image: postgres:latest  # イメージ指定
+    environment: # 環境変数を設定
+      POSTGRES_USER: user      
+      POSTGRES_PASSWORD: example  
+      POSTGRES_DB: mydatabase   
+    volumes: # ボリュームをマウント
+      - db_data:/var/lib/postgresql/data
+    networks: # ネットワークを指定
+      - mynetwork
+
+  web: # サービス名
+    image: nginx:latest # イメージ指定
+    ports: # ポートマッピング
+      - "8080:80"  
+    networks: # ネットワークを指定
+      - mynetwork
+
+volumes: # ボリュームを定義
+  db_data: # ボリューム名
+
+networks: # ネットワークを定義
+  mynetwork:  # ネットワーク名
