@@ -1,8 +1,18 @@
 services:
-  web: # サービス名
-    image: nginx:latest
-    ports:
-      - "8080:80"
-    # バインドマウントの指定
-    volumes:
-      - ./web_data_folder:/usr/share/nginx/html
+  sv1:
+    image: alpine:latest
+    networks:
+      - my-bridge-network
+    # エラーを出さないためのコマンド
+    command: ["tail", "-f", "/dev/null"] 
+
+  sv2:
+    image: alpine:latest
+    networks:
+      - my-bridge-network
+    # エラーを出さないためのコマンド
+    command: ["tail", "-f", "/dev/null"] 
+
+networks:
+  my-bridge-network:
+    driver: bridge
