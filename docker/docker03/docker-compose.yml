@@ -8,4 +8,9 @@ services:
       - web_data:/usr/share/nginx/html 
 
 volumes:
+  # 新しく定義する場合
   web_data:
+
+  # 既存のvolumeを使う場合
+  # web_data:
+  #   external: true
