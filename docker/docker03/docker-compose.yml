@@ -1,0 +1,11 @@
+services:
+  web: 
+    # Dockerfileを使ってイメージをビルド
+    build: . 
+    ports:
+      - "8080:80"
+    volumes: # ボリュームのマウント
+      - web_data:/usr/share/nginx/html 
+
+volumes:
+  web_data:
